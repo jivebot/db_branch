@@ -1,0 +1,18 @@
+= DB Branch
+
+Rake tasks to save and restore database state by git branch.
+
+Often, a project's schema and/or development data will vary as you work on different branches.  These tasks let you save the database state for the current git branch, switch over to another branch, and restore it when you return.
+
+== Usage
+
+    ~/projects/profit [master]> rake db:branch:save
+    ~/projects/profit [master]> git checkout feature-branch
+    ~/projects/profit [feature-branch]> ... work on other branch ...
+    ~/projects/profit [master]> rake db:branch:restore
+
+== Caveats
+
+* Helps to set git to ignore RAILS_ROOT/tmp/branch-dumps
+* Tested on OS X; probably works in Unix environments but not on Windows
+* Only supports MySQL for now
